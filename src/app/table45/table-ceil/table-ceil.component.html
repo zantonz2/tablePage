@@ -1,0 +1,30 @@
+<ng-container [ngSwitch]="tableDataCeil().cellType">
+	<ng-container *ngSwitchCase="'input'">
+		<ng-container *ngTemplateOutlet="ceilInput"></ng-container>
+	</ng-container>
+	<ng-container *ngSwitchCase="'select'">
+		<ng-container *ngTemplateOutlet="ceilSelect"></ng-container>
+	</ng-container>
+	<ng-container *ngSwitchDefault>
+		<span class="opacity">{{tableDataCeil().value}}</span>
+	</ng-container>
+</ng-container>
+
+
+<ng-template #ceilInput>
+	<mat-form-field>
+		<input matInput [formControl]="control" [type]="typeValue ?? 'text'">
+	</mat-form-field>
+</ng-template>
+
+<ng-template #ceilSelect>
+	<mat-form-field>
+		<mat-select [formControl]="control">
+			@for (item of tableDataCeil().selectValue || []; track item) {
+				<mat-option [value]="item">{{item}}</mat-option>
+			} @empty {
+				<span>-</span>
+			}
+		</mat-select>
+	</mat-form-field>
+</ng-template>

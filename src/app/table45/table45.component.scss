@@ -1,0 +1,31 @@
+@import '../../css/mixin.scss';
+
+$borderWidth: 10px;
+$borderColor: lightgray;
+$ceilColor: white;
+$ceilColorActive: rgba(limegreen, 0.5);
+
+.wrapp{
+	background-color: $borderColor;
+	padding:$borderWidth;
+	.table {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		grid-template-rows: repeat(4, 100px);
+		grid-gap: $borderWidth;
+		.ceil {
+			@include center;
+			width: 100%;
+			height: 100%;
+			background-color: $ceilColor;
+			&.active {
+				background-color: $ceilColorActive;
+			}
+		}
+	}
+}
+
+.extraInfo {
+	font-size: 10px;
+	color: gray;
+}
