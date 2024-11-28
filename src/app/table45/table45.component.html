@@ -1,0 +1,26 @@
+<span>Дана таблица из 4 строк и 5 колонок. <br></span>
+	<ul>
+		<li>В каждой ячейке может быть либо элемент <input type=text>, либо <select></select>, либо просто цифровое или строчное
+		значение.</li>
+		<li>По таблице между ячейками можно перемещаться стрелками на клавиатуре.</li>
+		<li>При нажатии на Enter переходим в элемент внутри ячейки и можем изменить значение либо выбрать значение из выпадающего списка.</li>
+		<li>При повторном нажатии на Enter или Esc возвращаемся на ячейки таблицы для перемещения стрелками по таблице.</li>
+	</ul>
+<hr>
+<div class="center">
+	<button mat-button (click)="updateData()">(перемешать)</button>
+</div>
+<hr>
+<div class="wrapp">
+	<div class="table">
+		@for (item of tableData(); track item; let i = $index) {
+			<div class="ceil" (click)="setActive($event, i)" [ngClass]="{'active': hoverCeil() === i}">
+				<table-ceil [tableDataCeil]="item" [active]="activeCeil() === i"></table-ceil>
+			</div>
+		} @empty {
+		<span>Нет данных</span>
+		}
+	</div>
+</div>
+<hr>
+<span class="extraInfo">{{tableData() | json}}</span>
