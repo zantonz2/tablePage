@@ -39,8 +39,8 @@ export class Table45Component {
   setActive(ev: MouseEvent, i: number) {
     // только для действий пользователей
     if (!ev.isTrusted) return;
-    this.hoverCeil.set(i)
-    const keyboardEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+    this.hoverCeil.set(i);
+    const keyboardEvent = new KeyboardEvent('keydown', { key: '_Mouse' });
     handleKeyDown(keyboardEvent, this.hoverCeil, this.activeCeil);
     if (this.tableData()[this.activeCeil() || 1000]?.cellType === 'txt') { this.activeCeil.set(null) }
   }
@@ -81,6 +81,10 @@ function handleKeyDown(ev: KeyboardEvent, hoverCeil: WritableSignal<number>, act
       } else {
         activeCeil.set(null)
       }
+      break;
+    }
+    case '_Mouse': {
+      activeCeil.set(hoverCeil());
       break;
     }
     case 'Escape':

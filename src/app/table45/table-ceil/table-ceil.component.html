@@ -12,12 +12,14 @@
 
 
 <ng-template #ceilInput>
+	<div class="wrapp" (click)="toggleActive($event)"></div>
 	<mat-form-field>
 		<input matInput [formControl]="control" [type]="typeValue ?? 'text'">
 	</mat-form-field>
 </ng-template>
 
 <ng-template #ceilSelect>
+	<div class="wrapp" (click)="toggleActive($event)"></div>
 	<mat-form-field>
 		<mat-select [formControl]="control">
 			@for (item of tableDataCeil().selectValue || []; track item) {

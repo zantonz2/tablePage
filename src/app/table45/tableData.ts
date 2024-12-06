@@ -5,13 +5,13 @@ export const tableData: WritableSignal<TableCell[]> = signal([
 		value: 'string',
 		cellType: 'input'
 	}, {
-		value: 'не радактируется',
+		value: 'не редактируется',
 		cellType: 'txt'
 	}, {
 		value: 'string',
 		cellType: 'input'
 	}, {
-		value: 'string',
+		value: 55,
 		cellType: 'input'
 	}, {
 		value: 'input',

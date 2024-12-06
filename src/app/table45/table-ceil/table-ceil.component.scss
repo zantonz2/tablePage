@@ -1,9 +1,16 @@
 :host {
+	position: relative;
 	mat-form-field {
 		margin-bottom: -22px;
 		max-width: 120px;
 	}
 	.opacity {
 		opacity: 0.45;
+	}
+	.wrapp {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 1;
 	}
 }

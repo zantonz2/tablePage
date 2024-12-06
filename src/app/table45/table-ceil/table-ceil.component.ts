@@ -1,4 +1,4 @@
-import { Component, effect, ElementRef, input, InputSignal, OnInit } from '@angular/core';
+import { Component, effect, ElementRef, HostListener, input, InputSignal, OnInit } from '@angular/core';
 import { CellType, TableCell } from '../tableData';
 import { NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -35,12 +35,7 @@ export class TableCeilComponent implements OnInit {
     private elementRef: ElementRef
   ) {
     effect(() => {
-      if (this.active()) {
-        this.control?.enable();
-        this.activateElement()
-      } else {
-        this.control?.disable();
-      }
+      this.toggleActive();
     })
   }
 
@@ -59,6 +54,15 @@ export class TableCeilComponent implements OnInit {
       }
       this.tableDataCeil().value = newValue;
     })
+  }
+
+  toggleActive(ev?: MouseEvent) {
+    if (this.active() || (ev && !this.active())) {
+      this.control?.enable();
+      this.activateElement()
+    } else {
+      this.control?.disable();
+    }
   }
 
   private activateElement() {
